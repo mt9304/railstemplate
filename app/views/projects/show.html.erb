@@ -1,0 +1,15 @@
+<%= flash_messages %>
+<h2>Project</h2>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  	$<%= @project.price %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project), class: "btn btn-warning" %>
+<%= link_to "Back", projects_path, class: "btn btn-default" %>
