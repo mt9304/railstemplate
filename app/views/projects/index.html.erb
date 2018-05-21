@@ -5,7 +5,7 @@
     <thead>
       <tr>
         <th class="col-md-2">Name</th>
-     <th class="col-md-2">Price</th>
+     <th class="col-md-2">Description</th>
      <th class="col-md-4">Options</th>
       </tr>
     </thead>
@@ -13,7 +13,7 @@
       <% @projects.each do |project| %>
         <tr>
          <td class="col-md-2"><%= project.name %></td>
-         <td class="col-md-2">$<%= project.price %></td>
+         <td class="col-md-2">$<%= project.description %></td>
          <td class="col-md-4">
             <%= link_to 'Show', project_path(project), class: "btn btn-info" %>
             <%= link_to 'Edit', edit_project_path(project), class: "btn  btn-warning" %>
