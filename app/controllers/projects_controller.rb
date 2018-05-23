@@ -16,14 +16,15 @@ class ProjectsController < ApplicationController
   def edit
   end
  
-  def create
-    @project = Project.new(project_params)
-    if @project.save
-      redirect_to @project, notice: 'Project was successfully created.'
-    else
-      render :new
-    end
+def create
+  @project = Project.new(project_params)
+  @project.user = current_user
+  if @project.save
+    redirect_to @project, notice: 'Project was successfully created.'
+  else
+    render :new
   end
+end
  
   def update
     if @project.update(project_params)
@@ -44,6 +45,6 @@ class ProjectsController < ApplicationController
   end
  
   def project_params
-    params.require(:project).permit(:name, :price)
+    params.require(:project).permit(:name, :description)
   end
 end
