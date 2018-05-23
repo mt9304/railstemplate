@@ -1,3 +1,3 @@
-class Project < ApplicationRecord
-	belongs_to :user
+class Project < ActiveRecord::Base
+  belongs_to :user
 end
