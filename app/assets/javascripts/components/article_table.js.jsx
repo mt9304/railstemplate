@@ -1,4 +1,11 @@
-function ArticleTable() {
+class ArticleTable extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.props = {articles: []};
+  }
+
+  render() {
     return (
       <table className='table table-striped'>
         <thead>
@@ -9,7 +16,8 @@ function ArticleTable() {
             <th className='col-md-4'>Content</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>{articles}</tbody>
       </table>
       );
+  }
 }
