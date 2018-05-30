@@ -27,3 +27,10 @@ end
 								 description: 200 * i,
 								 user: user2)
 end
+
+1.upto(10) do |i|
+  Article.create(name: "Article #{i}",
+               article_date: Date.today + rand(3).months,
+               description: "It's sample article with number #{i}",
+               content: "Random place number #{i}")
+end
