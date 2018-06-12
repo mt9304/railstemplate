@@ -2,7 +2,13 @@ class ArticleTable extends React.Component {
 
   constructor(props) {
     super(props);
-    this.props = {articles: []};
+    this.state = props;
+  }
+
+  renderItems() {
+    return this.state.articles.map((item) => (
+      <Article key={item.id} item={item} />
+  ));
   }
 
   render() {
@@ -16,7 +22,7 @@ class ArticleTable extends React.Component {
             <th className='col-md-4'>Content</th>
           </tr>
         </thead>
-        <tbody>{articles}</tbody>
+        <tbody>{this.renderItems()}</tbody>
       </table>
       );
   }

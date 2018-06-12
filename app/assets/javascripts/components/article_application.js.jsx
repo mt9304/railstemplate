@@ -7,7 +7,7 @@ class ArticleApplication extends React.Component {
   componentDidMount() {
     console.log("didmount1");
     this.getDataFromApi();
-    console.log("didmount2");
+    console.log(this.state);
   }
 
   getDataFromApi() {
