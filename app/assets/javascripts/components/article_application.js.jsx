@@ -35,6 +35,11 @@ class ArticleApplication extends React.Component {
           <div className="jumbotron">
             <h1>Articles</h1>
           </div>
+        <div className="row">
+          <div className="col-md-4">
+            <SearchForm handleSearch={this.handleSearch} />
+          </div>
+        </div>
           <div className="row">
             <div className="col-md-12">
               <ArticleTable articles={this.state.articles} />
