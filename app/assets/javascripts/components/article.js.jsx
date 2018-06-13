@@ -4,6 +4,5 @@ const Article = ({item}) => (
         <td>{item.article_date}</td>
         <td>{item.description}</td>
         <td>{item.content}</td>
-        <td>{item.text}</td>
       </tr>
   )
