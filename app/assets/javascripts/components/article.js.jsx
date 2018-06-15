@@ -1,4 +1,4 @@
-const Article = ({item}) => (
+let Article = ({item}) => (
       <tr>
         <td>{item.name}</td>
         <td>{item.article_date}</td>

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'dashboard#index'
   namespace :api do
-  	resources :articles
+  	resources :articles, only: [:index, :create] do
+  		get :search, on: :collection
+  	end
   end
   devise_for :users
   resources :projects

@@ -6,7 +6,7 @@ class ArticleTable extends React.Component {
   }
 
   renderItems() {
-    return this.state.articles.map((item) => (
+    return this.state.filteredArticles.map((item) => (
       <Article key={item.id} item={item} />
   ));
   }
