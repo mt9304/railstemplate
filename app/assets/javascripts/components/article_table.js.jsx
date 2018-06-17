@@ -5,7 +5,7 @@ class ArticleTable extends React.Component {
     this.state = props;
   }
 
-  /** Remember to use this instead of componentWillReceiveProps since it's deprecated and derived state was added in react 16.3. react rails is currently on 16.2, can't use this just yet. 
+  /** Remember to use this instead of componentWillReceiveProps since it's deprecated and derived state was added in react 16.3 in its place. react rails is currently on 16.2, can't use this just yet. 
   static getDeriveStateFromProps(nextProps, prevState) {
       return {
         filteredArticles: nextProps.filteredArticles
@@ -20,7 +20,6 @@ class ArticleTable extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    console.log("componentWillReceiveProps");
     this.setState(props);
   }
 

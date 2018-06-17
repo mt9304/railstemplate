@@ -5,13 +5,10 @@ class ArticleApplication extends React.Component {
   }
 
   componentDidMount() {
-    //console.log("didmount1");
     this.getDataFromApi();
-    //console.log(this.state);
   }
 
   getDataFromApi() {
-    console.log("Gettingdata");
     var self = this;
     $.ajax({
       url: '/api/articles',
@@ -25,21 +22,17 @@ class ArticleApplication extends React.Component {
   }
 
   updateSearch(event) {
-    //console.log(event.target.value.substr(0, 20));
     this.setState({search: event.target.value.substr(0, 20)});
-    //console.log("set to " + this.state.search);
   }
 
   render() {
-    //console.log("Rendering");
     const { error, isLoaded, articles, search } = this.state;
     let filteredArticles = this.state.articles.filter(
       (article) => {
-        return article.name.indexOf(this.state.search) !== -1;
+        return article.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
       }
     );
 
-    //console.log(filteredArticles);
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {

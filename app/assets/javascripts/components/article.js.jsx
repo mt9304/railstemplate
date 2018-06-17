@@ -1,7 +1,6 @@
 class Article extends React.Component {
 
   constructor(props) {
-    console.log("Calling article constructor");
     super(props);
     this.state = props;
   }
