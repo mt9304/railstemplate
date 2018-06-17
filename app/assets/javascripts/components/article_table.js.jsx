@@ -5,6 +5,13 @@ class ArticleTable extends React.Component {
     this.state = props;
   }
 
+  static getDeriveStateFromProps(nextProps, prevState) {
+    console.log("derivingState");
+      return {
+        filteredArticles: nextProps.filteredArticles
+      };
+  }
+
   renderItems() {
     return this.state.filteredArticles.map((item) => (
       <Article key={item.id} item={item} />
