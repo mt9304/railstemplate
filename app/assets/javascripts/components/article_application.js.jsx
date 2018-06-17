@@ -5,9 +5,9 @@ class ArticleApplication extends React.Component {
   }
 
   componentDidMount() {
-    console.log("didmount1");
+    //console.log("didmount1");
     this.getDataFromApi();
-    console.log(this.state);
+    //console.log(this.state);
   }
 
   getDataFromApi() {
@@ -25,13 +25,13 @@ class ArticleApplication extends React.Component {
   }
 
   updateSearch(event) {
-    console.log(event.target.value.substr(0, 20));
+    //console.log(event.target.value.substr(0, 20));
     this.setState({search: event.target.value.substr(0, 20)});
-    console.log("set to " + this.state.search);
+    //console.log("set to " + this.state.search);
   }
 
   render() {
-    console.log("Rendering");
+    //console.log("Rendering");
     const { error, isLoaded, articles, search } = this.state;
     let filteredArticles = this.state.articles.filter(
       (article) => {
@@ -39,7 +39,7 @@ class ArticleApplication extends React.Component {
       }
     );
 
-    console.log(filteredArticles);
+    //console.log(filteredArticles);
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
