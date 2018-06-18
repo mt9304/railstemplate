@@ -4,11 +4,26 @@ module Api
 			render json: Article.all
 		end
 
+		def new
+			@article = Article.new
+		end
+
+		def create
+
+		  render :new
+		end
+
 		def search
 			  query = params[:query]
-			  events = Article.where('name LIKE ? OR place LIKE ? OR description LIKE ?',
+			  articles = Article.where('name LIKE ? OR place LIKE ? OR description LIKE ?',
 			                       "%#{query}%", "%#{query}%", "%#{query}%")
-			  render json: events
+			  render json: articles
+		end
+
+		private
+
+		def article_params
+		  params.require(:article).permit(:name, :description, :article_date, :content, :tags)
 		end
 	end
 end
