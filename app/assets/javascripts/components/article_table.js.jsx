@@ -19,8 +19,11 @@ class ArticleTable extends React.Component {
   ));
   }
 
-  componentWillReceiveProps(props) {
-    this.setState(props);
+  componentWillReceiveProps(nextProps) {
+    if (nextProps !== this.props)
+    {
+      this.setState(nextProps);
+    }
   }
 
   render() {

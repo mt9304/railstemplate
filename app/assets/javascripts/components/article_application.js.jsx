@@ -43,16 +43,13 @@ class ArticleApplication extends React.Component {
           <div className="jumbotron">
             <h1>Articles</h1>
           </div>
-            <div className="row">
+
+          <div className="row">
             <div className="col-md-4">
               <SearchForm value={this.state.search} onChange={this.updateSearch.bind(this)} />
             </div>
-
-            <div className="col-md-4">
-              <input type="text" value={this.state.search} onChange={this.updateSearch.bind(this)} />
-            </div>
-
           </div>
+          
           <div className="row">
             <div className="col-md-12">
               <ArticleTable filteredArticles={filteredArticles} />
