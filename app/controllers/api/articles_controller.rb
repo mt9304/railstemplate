@@ -9,8 +9,12 @@ module Api
 		end
 
 		def create
-
-		  render :new
+		  article = Article.new(article_params)
+		  if article.save
+		    render json: article
+		  else
+    		render nothing: true, status: :bad_request
+  		  end
 		end
 
 		def search
