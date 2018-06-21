@@ -27,7 +27,7 @@ module Api
 		private
 
 		def article_params
-		  params.require(:article).permit(:name, :description, :article_date, :content, :tags)
+		  params.require(:article).permit(:name, :article_date, :description, :content, :tags)
 		end
 	end
 end

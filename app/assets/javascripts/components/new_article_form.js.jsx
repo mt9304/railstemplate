@@ -3,6 +3,7 @@ class NewArticleForm extends React.Component {
   constructor(props) {
   	super(props);
 	this.state = { name: "", article_date: "", description: "", content: "", tags: "" }; 
+  console.log(this.state.name);
   }
 
   isValidForm() {
@@ -17,20 +18,23 @@ class NewArticleForm extends React.Component {
   handleAdd(e) {
     e.preventDefault();
     var self = this;
+    var current_state = this.state;
+    console.log("Self.state: " + current_state);
     //if (this.isValidForm()) {}
     if (true) {
       $.ajax({
         url: '/api/articles',
         method: 'POST',
-        data: { article: self.state },
+        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+        data: { article: [current_state] },
         success: function(data) {
           console.log("Adding Record");
-          self.props.handleAdd(data);
+          //self.props.handleAdd(data);
           console.log("Adding Record2");
-          self.setState({ name: "", article_date: "", description: "", content: "", tags: "" });
+          self.setState({ article: { name: "", article_date: "", description: "", content: "", tags: "" } });
         },
         error: function(xhr, status, error) {
-          alert('Cannot add a new record: ', error);
+          alert('Cannot add a new record: ' + self.state , error);
         }
       })
     } else {
@@ -41,12 +45,13 @@ class NewArticleForm extends React.Component {
   handleChange(e) {
     var input_name = e.target.name;
     var value = e.target.value;
-    this.setState({ [input_name] : value });
+    this.setState({[input_name] : value});
+    console.log(this.state);
   }
   
   render() {
     return(
-      <form className="form-inline" onSubmit={this.handleAdd}>
+      <form className="form-inline" onSubmit={this.handleAdd.bind(this)}>
         <div className="form-group">
           <input type="text"
                  className="form-control"
