@@ -19,22 +19,22 @@ class NewArticleForm extends React.Component {
     e.preventDefault();
     var self = this;
     var current_state = this.state;
-    console.log("Self.state: " + current_state);
+    console.log(current_state);
     //if (this.isValidForm()) {}
     if (true) {
       $.ajax({
         url: '/api/articles',
         method: 'POST',
         beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-        data: { article: [current_state] },
+        data: { article: current_state },
         success: function(data) {
-          console.log("Adding Record");
+          console.log("Adding Record " + current_state);
           //self.props.handleAdd(data);
           console.log("Adding Record2");
-          self.setState({ article: { name: "", article_date: "", description: "", content: "", tags: "" } });
+          //self.setState({ name: "", article_date: "", description: "", content: "", tags: "" });
         },
         error: function(xhr, status, error) {
-          alert('Cannot add a new record: ' + self.state , error);
+          alert('Cannot add a new record: ' + self.state.name , error);
         }
       })
     } else {
