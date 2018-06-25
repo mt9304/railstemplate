@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def show
-		@article = Article.search(params[:title])
+		@article = Article.search(params[:name])
 	end
 
 	def new
@@ -12,11 +12,10 @@ class ArticlesController < ApplicationController
 	end
 
 	def create
-
 	  render :new
 	end
 
-	def search
+	def search(name)
 		  query = params[:query]
 		  articles = Article.where('name LIKE ? OR place LIKE ? OR description LIKE ?',
 		                       "%#{query}%", "%#{query}%", "%#{query}%")

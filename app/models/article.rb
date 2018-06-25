@@ -1,17 +1,17 @@
 class Article < ApplicationRecord
 	validates :name, presence: true, uniqueness: true
 
-	def self.search(title)
-		if title
-			title = title.downcase
+	def self.search(name)
+		if name
+			@name = name.downcase
 		end
 
-		if title && Article.where("name = ?", "#{@title}").present?
-			@article = Article.where("name = ?", "#{@title}")
-		elsif title && Article.where("name = ?", "#{@title}").blank?
-			@article = Article.where("name = ?", "Article Not Found")
+		if @name && Article.where("name = ?", "#{@name}").present?
+			@article = Article.where("lower(name) = ?", "#{@name}")
+		elsif @name && Article.where("lower(name) = ?", "#{@name}").blank?
+			@article = Article.where("lower(name) = ?", "article not found")
 		else
-			@article = Article.where("name = ?", "Default Article")
+			@article = Article.where("lower(name) = ?", "default article")
 		end
 	end
 
