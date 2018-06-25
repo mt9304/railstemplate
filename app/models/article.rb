@@ -6,12 +6,13 @@ class Article < ApplicationRecord
 			@name = name.downcase
 		end
 
+		#Return article if found, else say not found. Article controller will then throw 404 status. 
 		if @name && Article.where("name = ?", "#{@name}").present?
 			@article = Article.where("lower(name) = ?", "#{@name}")
 		elsif @name && Article.where("lower(name) = ?", "#{@name}").blank?
-			@article = Article.where("lower(name) = ?", "article not found")
+			@article = "article not found"
 		else
-			@article = Article.where("lower(name) = ?", "default article")
+			@article = "article not found"
 		end
 	end
 

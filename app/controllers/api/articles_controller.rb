@@ -24,11 +24,11 @@ module Api
 			if article_params
 				@article = Article.search(params[:name])
 			else
-				@article = Article.search(params["default_article"])
+				render json: "Article Not Found", status: 404
 			end
 
-			if @article.name.to_s.downcase == "article_not_found"
-	    		render nothing: true, status: :bad_request
+			if Article.search(params[:name]) == "article not found"
+	    		render json: "Article Not Found", status: 404
 	    	else
 	    		render json: @article
 	    	end
