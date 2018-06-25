@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def show
+		@article = Article.search(params[:title])
 	end
 
 	def new
