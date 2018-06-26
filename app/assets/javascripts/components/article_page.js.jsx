@@ -30,13 +30,11 @@ class ArticlePage extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <div className="container">
-          <div className="jumbotron">
-            <h1>{article[0].name}</h1>
+        <div className="blog-header">
+          <div className="container">
+            <h1 className="blog-title">{article[0].name}</h1>
+            <p className="lead blog-description">{article[0].description}</p>
           </div>
-
-          <p>{article[0].description}</p>
-
         </div>
       );
     }
