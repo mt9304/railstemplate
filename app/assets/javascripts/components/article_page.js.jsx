@@ -1,7 +1,7 @@
 class ArticlePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { article: { name: "", article_date: "", description: "", content: "", tags:"" } };
+    this.state = { };
   }
 
   componentDidMount() {
@@ -23,7 +23,6 @@ class ArticlePage extends React.Component {
 
   render() {
     const { error, isLoaded, article } = this.state;
-    console.log(article);
 
     if (error) {
       return <div>Error: {error.message}</div>;
@@ -33,10 +32,10 @@ class ArticlePage extends React.Component {
       return (
         <div className="container">
           <div className="jumbotron">
-            <h1>{article.name}</h1>
+            <h1>{article[0].name}</h1>
           </div>
 
-          <p>{article.description}</p>
+          <p>{article[0].description}</p>
 
         </div>
       );
