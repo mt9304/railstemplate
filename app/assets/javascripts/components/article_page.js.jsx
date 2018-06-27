@@ -10,8 +10,10 @@ class ArticlePage extends React.Component {
 
   getDataFromApi() {
     var self = this;
+    var currentURL = new URL(window.location.href);
+    var nameParameter = currentURL.searchParams.get("name");
     $.ajax({
-      url: '/api/articles/search?name=aa',
+      url: '/api/articles/search?name='+nameParameter,
       success: function(data) {
         self.setState({ error: false, isLoaded: true, article: data });
       },
