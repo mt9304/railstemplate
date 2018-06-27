@@ -30,10 +30,15 @@ class ArticlePage extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <div className="blog-header">
-          <div className="container">
-            <h1 className="blog-title">{article[0].name}</h1>
-            <p className="lead blog-description">{article[0].description}</p>
+        <div>
+          <div className="blog-header">
+            <div className="container">
+              <h1 className="blog-title">{article[0].name}</h1>
+              <p className="lead blog-description">{article[0].description}</p>
+            </div>
+          </div>
+          <div className="container" dangerouslySetInnerHTML={{__html: article[0].content}} >
+
           </div>
         </div>
       );
