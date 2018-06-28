@@ -58,7 +58,7 @@ h6, .h6 {
  */
 
 .container {
-  max-width: 60rem;
+  max-width: 660rem;
 }
 
 
@@ -177,6 +177,13 @@ h6, .h6 {
   color: #999;
 }
 
+#ta-previous {
+	margin-right: 10px;
+}
+
+#ta-next {
+	margin-left: 10px;
+}
 
 /*
  * Footer
@@ -196,5 +203,9 @@ h6, .h6 {
 /* End of article section */ 
 
 /* For the sidebar section */
+.ta-menu-header {
+    margin-bottom: -5px;
+    margin-top: 9px;
+}
 
 /* End of sidebar section */
