@@ -15,7 +15,7 @@ class SearchForm extends React.Component {
   render() {
     return (
     	<div>
-	    	<input type="text" value={this.state.value} onChange={this.state.onChange} />
+	    	<input type="text" value={this.state.value} onChange={this.state.onChange} placeholder=" Search Title" />
 	    	<div className="row"></div>
 	    	<br/>
     	</div>

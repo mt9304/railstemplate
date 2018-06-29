@@ -40,7 +40,7 @@ class ArticleApplication extends React.Component {
     } else {
       return (
         <div className="container">
-          <div className="jumbotron">
+          <div className="jumbotron ta-bg-white">
             <h1>Articles</h1>
           </div>
 
