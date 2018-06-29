@@ -18,7 +18,7 @@ class ArticleSideMenu extends React.Component{
                     <a href="#homeSubmenu">Purpose</a>
                 </li>
 
-                <p className="ta-menu-header">1. Basics</p>
+                <p className="ta-menu-header">1. The Basics</p>
                 <li className="">
                     <a href="#homeSubmenu">The Internet And Technology</a>
                 </li>
@@ -49,7 +49,7 @@ class ArticleSideMenu extends React.Component{
                     <a href="#homeSubmenu">React</a>
                 </li>
 
-                <p className="ta-menu-header">3. Theories</p>
+                <p className="ta-menu-header">3. Important Theories</p>
                 <li className="">
                     <a href="#homeSubmenu">Big O</a>
                 </li>
@@ -68,6 +68,9 @@ class ArticleSideMenu extends React.Component{
                     <a href="#homeSubmenu">Domains</a>
                 </li>
                 <li className="">
+                    <a href="#homeSubmenu">Hosting (AWS/Heroku)</a>
+                </li>
+                <li className="">
                     <a href="#homeSubmenu">Web Server (Nginx)</a>
                 </li>
                 <li className="">
@@ -77,10 +80,10 @@ class ArticleSideMenu extends React.Component{
                     <a href="#homeSubmenu">Caching and CDNs</a>
                 </li>
                 <li className="">
-                    <a href="#homeSubmenu">Disaster Recovery</a>
+                    <a href="#homeSubmenu">Disaster Recovery (Backups)</a>
                 </li>
                 <li className="">
-                    <a href="#homeSubmenu">Let's Encrypt</a>
+                    <a href="#homeSubmenu">Let's Encrypt (SSL)</a>
                 </li>
 
                 <p className="ta-menu-header">5. Post Production</p>
