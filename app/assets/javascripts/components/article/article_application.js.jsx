@@ -16,7 +16,8 @@ class ArticleApplication extends React.Component {
         self.setState({ error: false, isLoaded: true, articles: data});
       },
       error: function(xhr, status, error) {
-        alert('Cannot get data from API: ', error);
+        self.setState({ error: false, isLoaded: true, status: error});
+        alert('Cannot get data from API: '+ error);
       }
     });
   }
@@ -34,7 +35,8 @@ class ArticleApplication extends React.Component {
     );
 
     if (error) {
-      return <div>Error: {error.message}</div>;
+      const { error, isLoaded, status } = this.state;
+      return (<div>Error: {status}</div>);
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {

@@ -19,7 +19,7 @@ class ArticlePage extends React.Component {
       },
       error: function(xhr, status, error) {
         self.setState({ error: true, isLoaded: true, status: error});
-        alert('Cannot get data from API: ', error);
+        alert('Cannot get data from API: '+ error);
       }
     });
   }
