@@ -1,0 +1,34 @@
+.ta-quill-textbox {
+	background-color: #FFF;
+	min-height: 300px;
+}
+
+.ta-quill-toolbar {
+	background-color: #C8C8C8;
+}
+
+.ta-right {
+	float: right;
+}
+
+.ta-left {
+	float: left;
+}
+
+.ta-input-block {
+	display: block;
+}
+
+.ta-top-input {
+
+}
+
+.ta-bottom-input {
+
+}
+
+@media only screen and (max-width: 410px) {
+    .ta-right {
+        float: left;
+    }
+}

@@ -9,7 +9,7 @@ module Api
 		end
 
 		def create
-		  article = Article.new(article_params)
+		  article = Article.new(article_create_params)
 		  if article.save
 		    render json: article
 		  else
@@ -18,9 +18,7 @@ module Api
 		end
 
 		def search
-			#query = params[:query]
-			#articles = Article.where('name LIKE ? OR place LIKE ? OR description LIKE ?',"%#{query}%", "%#{query}%", "%#{query}%")
-			#render json: articles
+			#Need a view template since the render json is a string. 
 			if article_params
 				@article = Article.search(params[:name])
 			else
@@ -37,8 +35,11 @@ module Api
 		private
 
 		def article_params
-		  #params.require(:article).permit(:name, :article_date, :description, :content, :tags)
-		  params.require(:name)
+	  		params.permit(:article, :name, :article_date, :description, :content, :tags)
+		end
+
+		def article_create_params
+			params.require(:article).permit(:name, :article_date, :description, :content, :tags)
 		end
 	end
 end

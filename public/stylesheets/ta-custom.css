@@ -9,7 +9,7 @@
 body {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     margin: 0;
-    font-size: 1rem;
+    /* font-size: 1rem; */
     font-weight: 400;
     line-height: 1.5;
     color: #212529;
@@ -185,10 +185,21 @@ h6, .h6 {
 	margin-left: 10px;
 }
 
-/*
- * Footer
- */
 
+/* End of article section */ 
+
+
+
+/* For the sidebar section */
+.ta-menu-header {
+    margin-bottom: -5px;
+    margin-top: 9px;
+}
+
+/* End of sidebar section */
+
+
+/* For the footer */
 .blog-footer {
   padding: 2.5rem 0;
   color: #999;
@@ -199,13 +210,4 @@ h6, .h6 {
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
-
-/* End of article section */ 
-
-/* For the sidebar section */
-.ta-menu-header {
-    margin-bottom: -5px;
-    margin-top: 9px;
-}
-
-/* End of sidebar section */
+/* End of footer */

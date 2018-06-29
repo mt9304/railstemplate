@@ -34,6 +34,9 @@ class ArticleSideMenu extends React.Component{
                 <li className="">
                     <a href="#homeSubmenu">Web Servers</a>
                 </li>
+                <li className="">
+                    <a href="#homeSubmenu">Troubleshooting</a>
+                </li>
 
                 <p className="ta-menu-header">2. Building The Project</p>
                 <li className="">

@@ -48,47 +48,73 @@ class NewArticleForm extends React.Component {
     this.setState({[input_name] : value});
     console.log(this.state);
   }
+
+  componentDidMount() {
+    //For initializing Quill editor: http://jsplanet.net/plugin/1069/javascript/quill
+    const scriptElement = document.createElement("script");
+    const rawScript = "var editor = new Quill('#editor', { modules: { toolbar: '#toolbar' }, theme: 'snow' });";
+    const scriptNode = document.createTextNode(rawScript);
+    scriptElement.appendChild(scriptNode);
+    document.body.appendChild(scriptElement);
+  }
   
   render() {
     return(
-      <form className="form-inline" onSubmit={this.handleAdd.bind(this)}>
-        <div className="form-group">
-          <input type="text"
-                 className="form-control"
-                 name="name"
-                 placeholder="Name"
+      <form className="ta-input-block" onSubmit={this.handleAdd.bind(this)}>
+        <div className="ta-top-input">
+          <div className="form-group ta-left">
+            <input type="text"
+                   className="form-control"
+                   name="name"
+                   placeholder="Name"
 
-                 value={this.state.name}
-                 onChange={this.handleChange.bind(this)} />
-        </div>
-        <div className="form-group">
-          <input type="date"
-                 className="form-control"
-                 name="article_date"
-                 placeholder="Article Date"
+                   value={this.state.name}
+                   onChange={this.handleChange.bind(this)} />
+          </div>
+          <div className="form-group ta-right">
+            <input type="date"
+                   className="form-control"
+                   name="article_date"
+                   placeholder="Article Date"
 
-                 value={this.state.article_date}
-                 onChange={this.handleChange.bind(this)} />
+                   value={this.state.article_date}
+                   onChange={this.handleChange.bind(this)} />
+          </div>
         </div>
-        <div className="form-group">
-          <input type="text"
-                 className="form-control"
-                 name="description"
-                 placeholder="Description"
 
-                 value={this.state.description}
-                 onChange={this.handleChange.bind(this)} />
-        </div>
-        <div className="form-group">
-          <input type="text"
-                 className="form-control"
-                 name="content"
-                 placeholder="Content"
+        <div className="ta-bottom-input">
+          <div className="form-group">
+            <input type="text"
+                   className="form-control"
+                   name="description"
+                   placeholder="Description"
 
-                 value={this.state.content}
-                 onChange={this.handleChange.bind(this)} />
+                   value={this.state.description}
+                   onChange={this.handleChange.bind(this)} />
+          </div>
+          <div className="form-group">
+            <input type="text"
+                   className="form-control"
+                   name="content"
+                   placeholder="Content"
+
+                   value={this.state.content}
+                   onChange={this.handleChange.bind(this)} />
+          </div>
         </div>
-        <button type="submit" className="btn btn-primary">Add</button>
+
+        <div id="toolbar" className="ta-quill-toolbar">
+          <button className="ql-bold">Bold</button>
+          <button className="ql-italic">Italic</button>
+        </div>
+
+        <div id="editor" className="ta-quill-textbox">
+          <p></p>
+        </div>
+
+
+
+        <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     )
   }
