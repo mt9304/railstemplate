@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rails Template</title>
+  <title>Rails Template</title>Articles
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -53,5 +53,6 @@
   <div id="main-container" class="container">
     <%= yield %>
   </div>
+  <%= react_component 'Footer' %>
 </body>
 </html>

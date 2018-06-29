@@ -1,4 +1,4 @@
-class ArticleFooter extends React.Component {
+class Footer extends React.Component {
 	
   constructor(props) {
     super(props);

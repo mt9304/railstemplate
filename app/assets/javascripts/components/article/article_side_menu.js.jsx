@@ -13,7 +13,7 @@ class ArticleSideMenu extends React.Component{
             </div>
 
             <ul className="list-unstyled components">
-                <p className="ta-menu-header"><a href="#summaryPage">0. Introduction</a></p>
+                <p className="ta-menu-header">0. Introduction</p>
                 <li className="">
                     <a href="#homeSubmenu">Purpose</a>
                 </li>
@@ -37,10 +37,13 @@ class ArticleSideMenu extends React.Component{
 
                 <p className="ta-menu-header">2. Building The Project</p>
                 <li className="">
-                    <a href="#homeSubmenu">Ruby On Rails</a>
+                    <a href="#homeSubmenu">Ruby on Rails</a>
                 </li>
                 <li className="">
                     <a href="#homeSubmenu">Authentication</a>
+                </li>
+                <li className="">
+                    <a href="#homeSubmenu">Authorization</a>
                 </li>
                 <li className="">
                     <a href="#homeSubmenu">React</a>
@@ -56,10 +59,16 @@ class ArticleSideMenu extends React.Component{
                 <li className="">
                     <a href="#homeSubmenu">OO and Design Patterns</a>
                 </li>
+                <li className="">
+                    <a href="#homeSubmenu">Frameworks and Architecture</a>
+                </li>
 
                 <p className="ta-menu-header">4. To Production</p>
                 <li className="">
-                    <a href="#homeSubmenu">Nginx</a>
+                    <a href="#homeSubmenu">Domains</a>
+                </li>
+                <li className="">
+                    <a href="#homeSubmenu">Web Server (Nginx)</a>
                 </li>
                 <li className="">
                     <a href="#homeSubmenu">Scripting (Bash)</a>
@@ -80,6 +89,9 @@ class ArticleSideMenu extends React.Component{
                 </li>
                 <li className="">
                     <a href="#homeSubmenu">Google Analytics</a>
+                </li>
+                <li className="">
+                    <a href="#homeSubmenu">Email Domains</a>
                 </li>
 
 				<p className="ta-menu-header">Next Steps</p>
