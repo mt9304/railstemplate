@@ -16,10 +16,16 @@ class NewArticleForm extends React.Component {
   }
 
   handleAdd(e) {
+    //For getting Quill HTML content. 
+    var richTextNode = document.getElementsByClassName('ql-editor')[0];
+    htmlContent = richTextNode.innerHTML;
+    this.setState({content: "htmlContent"});
+    console.log(htmlContent);
+
     e.preventDefault();
     var self = this;
     var current_state = this.state;
-    console.log(current_state);
+    current_state.content = htmlContent;
     //if (this.isValidForm()) {}
     if (true) {
       $.ajax({
@@ -46,7 +52,6 @@ class NewArticleForm extends React.Component {
     var input_name = e.target.name;
     var value = e.target.value;
     this.setState({[input_name] : value});
-    console.log(this.state);
   }
 
   componentDidMount() {
@@ -106,10 +111,19 @@ class NewArticleForm extends React.Component {
         <div id="toolbar" className="ta-quill-toolbar">
           <button className="ql-bold">Bold</button>
           <button className="ql-italic">Italic</button>
+          <button className="ql-underline">Underline</button>
+          <button className="ql-link">Link</button>
+          <button className="ql-code-block">Code Block</button>
+            <select className="ql-size">
+              <option value="small"></option>
+              <option selected></option>
+              <option value="large"></option>
+              <option value="huge"></option>
+            </select>
         </div>
 
-        <div id="editor" className="ta-quill-textbox">
-          <p></p>
+        <div id="editor" className="ta-quill-textbox" name="content" value={this.state.content} onChange={this.handleChange.bind(this)}>
+          <p id="richText"></p>
         </div>
 
 
