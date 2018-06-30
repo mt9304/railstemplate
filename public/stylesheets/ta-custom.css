@@ -16,6 +16,7 @@ body {
     text-align: left;
     background-color: #fff;
     display: block;
+    min-height: 100%;
 }
 
 .container {
@@ -206,6 +207,8 @@ h6, .h6 {
   text-align: center;
   background-color: #f9f9f9;
   border-top: .05rem solid #e5e5e5;
+  bottom: 0;
+  width: 100%;
 }
 .blog-footer p:last-child {
   margin-bottom: 0;
@@ -216,6 +219,10 @@ h6, .h6 {
 
 .ta-bg-white {
 	background-color: #fff;
+}
+
+.ta-wrapper {
+	min-height: 100vh;
 }
 
 /* End of main page */

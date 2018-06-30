@@ -50,9 +50,11 @@
       </div>
     </div>
   </nav>
-  <div id="main-container" class="container">
-    <%= yield %>
+  <div>
+    <div id="main-container" class="container ta-wrapper">
+      <%= yield %>
+    </div>
+    <%= react_component 'Footer' %>
   </div>
-  <%= react_component 'Footer' %>
 </body>
 </html>
