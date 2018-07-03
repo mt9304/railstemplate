@@ -3,7 +3,7 @@ class NewArticleForm extends React.Component {
   constructor(props) {
   	super(props);
 	this.state = { name: "", article_date: "", description: "", content: "", tags: "" }; 
-  console.log(this.state.name);
+  //console.log(this.state.name);
   }
 
   isValidForm() {
@@ -20,7 +20,7 @@ class NewArticleForm extends React.Component {
     var richTextNode = document.getElementsByClassName('ql-editor')[0];
     htmlContent = richTextNode.innerHTML;
     this.setState({content: "htmlContent"});
-    console.log(htmlContent);
+    //console.log(htmlContent);
 
     e.preventDefault();
     var self = this;
@@ -34,10 +34,13 @@ class NewArticleForm extends React.Component {
         beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
         data: { article: current_state },
         success: function(data) {
-          console.log("Adding Record " + current_state);
+          //console.log("Adding Record " + current_state);
           //self.props.handleAdd(data);
-          console.log("Adding Record2");
-          //self.setState({ name: "", article_date: "", description: "", content: "", tags: "" });
+          //console.log("Adding Record2");
+          self.setState({ name: "", article_date: "", description: "", content: "", tags: "" });
+          richTextNode.innerHTML = "";
+          console.log("Post created successfully");
+          //Add flash message here. 
         },
         error: function(xhr, status, error) {
           alert('Cannot add a new record: ' + self.state.name , error);
@@ -97,15 +100,6 @@ class NewArticleForm extends React.Component {
                    value={this.state.description}
                    onChange={this.handleChange.bind(this)} />
           </div>
-          <div className="form-group">
-            <input type="text"
-                   className="form-control"
-                   name="content"
-                   placeholder="Content"
-
-                   value={this.state.content}
-                   onChange={this.handleChange.bind(this)} />
-          </div>
         </div>
 
         <div id="toolbar" className="ta-quill-toolbar">
@@ -122,7 +116,7 @@ class NewArticleForm extends React.Component {
             </select>
         </div>
 
-        <div id="editor" className="ta-quill-textbox" name="content" value={this.state.content} onChange={this.handleChange.bind(this)}>
+        <div id="editor" className="ta-quill-textbox" name="content" value={this.state.content} >
           <p id="richText"></p>
         </div>
 
