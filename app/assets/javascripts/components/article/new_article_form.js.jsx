@@ -60,7 +60,7 @@ class NewArticleForm extends React.Component {
   componentDidMount() {
     //For initializing Quill editor: http://jsplanet.net/plugin/1069/javascript/quill
     const scriptElement = document.createElement("script");
-    const rawScript = "var editor = new Quill('#editor', { modules: { toolbar: '#toolbar' }, theme: 'snow' });";
+    const rawScript = "var toolbarOptions = [['bold', 'italic'], ['link', 'image'],[{ 'header': [1, 2, 3, 4, 5, 6, false] }],['blockquote', 'code-block'],[{ 'color': [] }, { 'background': [] }]];\nvar editor = new Quill('#editor', { modules: { toolbar: toolbarOptions }, theme: 'snow' });";
     const scriptNode = document.createTextNode(rawScript);
     scriptElement.appendChild(scriptNode);
     document.body.appendChild(scriptElement);
@@ -103,17 +103,7 @@ class NewArticleForm extends React.Component {
         </div>
 
         <div id="toolbar" className="ta-quill-toolbar">
-          <button className="ql-bold">Bold</button>
-          <button className="ql-italic">Italic</button>
-          <button className="ql-underline">Underline</button>
-          <button className="ql-link">Link</button>
-          <button className="ql-code-block">Code Block</button>
-            <select className="ql-size">
-              <option value="small"></option>
-              <option selected></option>
-              <option value="large"></option>
-              <option value="huge"></option>
-            </select>
+
         </div>
 
         <div id="editor" className="ta-quill-textbox" name="content" value={this.state.content} >
