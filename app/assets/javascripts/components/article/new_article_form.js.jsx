@@ -8,7 +8,7 @@ class NewArticleForm extends React.Component {
 
   isValidForm() {
     if (this.state.name && this.state.article_date && 
-        this.state.description && this.state.content) {
+        this.state.description) {
       return true;
     } else {
       return false;
@@ -26,8 +26,8 @@ class NewArticleForm extends React.Component {
     var self = this;
     var current_state = this.state;
     current_state.content = htmlContent;
-    //if (this.isValidForm()) {}
-    if (true) {
+    if (this.isValidForm()) {
+    //if (true) {
       $.ajax({
         url: '/api/articles',
         method: 'POST',
@@ -43,7 +43,7 @@ class NewArticleForm extends React.Component {
           //Add flash message here. 
         },
         error: function(xhr, status, error) {
-          alert('Cannot add a new record: ' + self.state.name , error);
+          alert('Cannot add a new record: ' + self.state.name , status);
         }
       })
     } else {
