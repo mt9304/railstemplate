@@ -6,21 +6,26 @@ class Article extends React.Component {
   }
 
   handleDelete(e) {
+    
+    if (confirm('Are you sure you want to delete article: ' + this.state.item.name+'?')) {
+      var self = this;
+      var articleId = this.state.item.id;
+      e.preventDefault();
 
-    var self = this;
-    var articleId = this.state.item.id;
-    e.preventDefault();
-    $.ajax({
-      method: 'DELETE',
-      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-      url: '/api/articles/' + articleId,
-      success: function(data) {
-        self.props.handleDeleteRecord(self.props.item);
-      }.bind(this),
-      error: function(xhr, status, error) {
-        alert('Cannot delete requested record: xhr: '+xhr+' status: '+status+' error: '+error, status);
-      }
-    });
+      $.ajax({
+        method: 'DELETE',
+        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+        url: '/api/articles/' + articleId,
+        success: function(data) {
+          self.props.handleDeleteRecord(self.props.item);
+        }.bind(this),
+        error: function(xhr, status, error) {
+          alert('Cannot delete requested record: xhr: '+xhr+' status: '+status+' error: '+error, status);
+        }
+      });
+    } else {
+      console.log('Cancelled delete action. ');
+    }
   }
 
 
