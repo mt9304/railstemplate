@@ -17,7 +17,8 @@ class Article extends React.Component {
         beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
         url: '/api/articles/' + articleId,
         success: function(data) {
-          self.props.handleDeleteRecord(self.props.item);
+          //self.props.handleDeleteRecord(self.props.item);
+          location.reload();
         }.bind(this),
         error: function(xhr, status, error) {
           alert('Cannot delete requested record: xhr: '+xhr+' status: '+status+' error: '+error, status);
