@@ -34,7 +34,7 @@ class ArticleTable extends React.Component {
             <th className='col-md-3'>Name</th>
             <th className='col-md-2'>Date</th>
             <th className='col-md-3'>Description</th>
-            <th className='col-md-4'>Content</th>
+            <th className='col-md-4'>Actions</th>
           </tr>
         </thead>
         <tbody>{this.renderItems()}</tbody>
