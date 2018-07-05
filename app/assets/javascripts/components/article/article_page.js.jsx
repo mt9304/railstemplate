@@ -24,6 +24,34 @@ class ArticlePage extends React.Component {
     });
   }
 
+  handleUpdate(e) {
+      var self = this;
+      var articleId = this.state.article.id;
+    //e.preventDefault();
+    if (this.validRecord()) {
+      var event_data = {
+        name: this.recordValue("name"),
+        description: this.recordValue("description"),
+        date: this.recordValue("date"),
+        place: this.recordValue("place")
+      };
+      $.ajax({
+        method: 'PUT',
+        url: '/api/articles/' + this.props.event.id,
+        data: { event: event_data },
+        success: function(data) {
+          this.props.handleUpdateRecord(this.props.event, data);
+          this.setState({ edit: false });
+        }.bind(this),
+        error: function(xhr, status, error) {
+          alert('Cannot update requested record: ', error);
+        }
+      });
+    } else {
+      alert('Please fill all fields.');
+    }
+  }
+
   render() {
     const { error, isLoaded, article } = this.state;
 

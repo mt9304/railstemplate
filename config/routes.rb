@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'dashboard#index'
   namespace :api do
-  	resources :articles, only: [:index, :create, :show, :destroy] do
+  	resources :articles, only: [:index, :create, :show, :destroy, :update] do
   		get :search, on: :collection
   	end
   end

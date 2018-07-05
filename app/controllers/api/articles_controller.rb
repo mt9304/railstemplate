@@ -19,6 +19,14 @@ module Api
   		  end
 		end
 
+		def update
+			if (@article.update(article_create_params))
+				render json: @article
+			else
+				render nothing: true, status: :unprocessable_entity
+			end
+		end
+
 		def show
 			@article = Article.find(params[:id])
 			render json: @article
