@@ -41,14 +41,22 @@ class EditArticleForm extends React.Component {
 		//console.log(htmlContent);
 
 		e.preventDefault();
-
-		this.getInputData();
-		//For getting Quill HTML content. 
-		//var richTextNode = document.getElementsByClassName('ql-editor')[0];
-		//htmlContent = richTextNode.innerHTML;
-		//this.setState({ article: { content: "htmlContent"} });
-		var self = this;
 		var current_state = this.state;
+		var self = this;
+		var name_input = document.getElementsByName("name")[0].value;
+		var article_date_input = document.getElementsByName("article_date")[0].value;
+		var description_input = document.getElementsByName("description")[0].value;
+		//For getting Quill HTML content. 
+		var richTextNode = document.getElementsByClassName('ql-editor')[0];
+		htmlContent = richTextNode.innerHTML;
+		this.setState( { article: { name: name_input, article_date: article_date_input, description: description_input, content: htmlContent } }, () => {
+			current_state = this.state;
+		
+		//this.getInputData();
+
+		//this.setState({ article: { content: "htmlContent"} });
+		
+		
 		//current_state.article.content = htmlContent;
 		//console.log(current_state);
 		if (this.isValidForm()) {
@@ -57,7 +65,7 @@ class EditArticleForm extends React.Component {
 		    url: '/api/articles/'+current_state.id,
 		    method: 'PUT',
 		    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-		    data: { article: current_state },
+		    data: { article: current_state.article },
 		    success: function(data) {
 		      //self.setState({ name: "", article_date: "", description: "", content: "", tags: "" });
 		      //richTextNode.innerHTML = "";
@@ -72,6 +80,7 @@ class EditArticleForm extends React.Component {
 		} else {
 		  alert('Please fill all fields.');
 		}
+		});
 	}
 
 	handleChange(e) {
