@@ -24,9 +24,9 @@ class ArticlePage extends React.Component {
     });
   }
 
-    recordValue(field) {
+  recordValue(field) {
     return ReactDOM.findDOMNode(this.refs[field]).value;
-  },s
+  }
 
   render() {
     const { error, isLoaded, article } = this.state;

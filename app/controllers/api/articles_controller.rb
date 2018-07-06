@@ -1,6 +1,6 @@
 module Api
 	class ArticlesController < ApplicationController
-		before_action :set_article, only: [:destroy]
+		before_action :set_article, only: [:destroy, :update]
 
 		def index
 			render json: Article.all
@@ -20,7 +20,7 @@ module Api
 		end
 
 		def update
-			if (@article.update(article_create_params))
+			if @article.update(article_create_params)
 				render json: @article
 			else
 				render nothing: true, status: :unprocessable_entity
