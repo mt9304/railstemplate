@@ -13,6 +13,20 @@ class ArticleTable extends React.Component {
   }
   **/
 
+  checkIfAdmin() {
+      $.ajax({
+        url: '/api/articles/new',
+        success: function(admin) {
+          console.log(admin);
+        },
+        error: function(xhr, status, error) {
+          console.log("Error checking permission. ");
+        }
+      });
+
+
+  }
+
   renderItems() {
     return this.state.filteredArticles.map((item) => (
       <Article key={item.id} item={item} />
@@ -26,7 +40,12 @@ class ArticleTable extends React.Component {
     }
   }
 
+  componentWillMount() {
+
+  }
+
   render() {
+    this.checkIfAdmin();
     return (
       <table className='table table-striped'>
         <thead>
