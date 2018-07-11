@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   	resources :articles, only: [:index, :create, :show, :destroy, :update] do
   		get :search, on: :collection
   	end
+
+    resources :check_role, only: [:index]
   end
 
   resources :articles
