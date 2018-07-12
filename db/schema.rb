@@ -18,6 +18,10 @@ ActiveRecord::Schema.define(version: 2018_05_28_221534) do
     t.text "description", null: false
     t.text "content", null: false
     t.text "tags"
+    t.text "next_article"
+    t.text "previous_article"
+    t.text "author"
+    t.text "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
