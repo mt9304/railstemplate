@@ -17,11 +17,11 @@ class ArticleApplication extends React.Component {
       success: function(role) {
         if (role.isAdmin)
         {
-          self.setState({ isAdmin: true});
+          self.setState({ isAdmin: true, roleChecked: true });
         }
         else
         {
-          self.setState({ isAdmin: false});
+          self.setState({ isAdmin: false, roleChecked: true });
         }
       },
       error: function(xhr, status, error) {
@@ -50,7 +50,7 @@ class ArticleApplication extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, articles, search } = this.state;
+    const { error, isLoaded, articles, search, isAdmin, roleChecked } = this.state;
     let filteredArticles = this.state.articles.filter(
       (article) => {
         return article.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
@@ -58,9 +58,9 @@ class ArticleApplication extends React.Component {
     );
 
     if (error) {
-      const { error, isLoaded, status } = this.state;
+      const { error, isLoaded, status, isAdmin, roleChecked } = this.state;
       return (<div>Error: {status}</div>);
-    } else if (!isLoaded) {
+    } else if (!isLoaded || !roleChecked) {
       return <div>Loading...</div>;
     } else {
       return (
