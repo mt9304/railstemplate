@@ -31,7 +31,9 @@ class Article extends React.Component {
 
 
   render() {
-    return (
+    if (this.state.isAdmin)
+    {
+      return (
           <tr>
             <td>{this.state.item.name}</td>
             <td>{this.state.item.article_date}</td>
@@ -42,5 +44,17 @@ class Article extends React.Component {
             Delete</a>
             </td>
           </tr>
-  )} 
+      );
+    }
+    else
+    {
+      return (
+          <tr>
+            <td>{this.state.item.name}</td>
+            <td>{this.state.item.article_date}</td>
+            <td>{this.state.item.description}</td>
+          </tr>
+      );
+    }
+  }
 }

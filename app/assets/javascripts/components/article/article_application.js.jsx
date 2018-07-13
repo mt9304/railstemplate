@@ -6,6 +6,29 @@ class ArticleApplication extends React.Component {
 
   componentDidMount() {
     this.getDataFromApi();
+    this.checkIfAdmin();
+    console.log("Admin: " + this.state.isAdmin);
+  }
+
+  checkIfAdmin() {
+    var self = this;
+    $.ajax({
+      url: '/api/check_role',
+      success: function(role) {
+        if (role.isAdmin)
+        {
+          self.setState({ isAdmin: true});
+        }
+        else
+        {
+          self.setState({ isAdmin: false});
+        }
+      },
+      error: function(xhr, status, error) {
+        self.setState({ error: true, isLoaded: true, status: error});
+        alert('Cannot get user role: '+ error);
+      }
+    });
   }
 
   getDataFromApi() {
@@ -54,7 +77,7 @@ class ArticleApplication extends React.Component {
           
           <div className="row">
             <div className="col-md-12">
-              <ArticleTable filteredArticles={filteredArticles} />
+              <ArticleTable filteredArticles={filteredArticles} isAdmin={this.state.isAdmin} />
             </div>
           </div>
         </div>

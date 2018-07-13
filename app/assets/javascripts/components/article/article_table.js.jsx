@@ -13,23 +13,9 @@ class ArticleTable extends React.Component {
   }
   **/
 
-  checkIfAdmin() {
-      $.ajax({
-        url: '/api/articles/new',
-        success: function(admin) {
-          console.log(admin);
-        },
-        error: function(xhr, status, error) {
-          console.log("Error checking permission. ");
-        }
-      });
-
-
-  }
-
   renderItems() {
     return this.state.filteredArticles.map((item) => (
-      <Article key={item.id} item={item} />
+      <Article key={item.id} item={item} isAdmin={this.state.isAdmin} />
   ));
   }
 
@@ -45,7 +31,8 @@ class ArticleTable extends React.Component {
   }
 
   render() {
-    this.checkIfAdmin();
+    if (this.state.isAdmin)
+    {
     return (
       <table className='table table-striped'>
         <thead>
@@ -59,5 +46,21 @@ class ArticleTable extends React.Component {
         <tbody>{this.renderItems()}</tbody>
       </table>
       );
+    }
+    else
+    {
+    return (
+      <table className='table table-striped'>
+        <thead>
+          <tr>
+            <th className='col-md-3'>Name</th>
+            <th className='col-md-2'>Date</th>
+            <th className='col-md-3'>Description</th>
+          </tr>
+        </thead>
+        <tbody>{this.renderItems()}</tbody>
+      </table>
+      );
+    }
   }
 }
