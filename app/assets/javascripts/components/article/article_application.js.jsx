@@ -7,7 +7,6 @@ class ArticleApplication extends React.Component {
   componentDidMount() {
     this.getDataFromApi();
     this.checkIfAdmin();
-    console.log("Admin: " + this.state.isAdmin);
   }
 
   checkIfAdmin() {
@@ -25,7 +24,7 @@ class ArticleApplication extends React.Component {
         }
       },
       error: function(xhr, status, error) {
-        self.setState({ error: true, isLoaded: true, status: error});
+        self.setState({ error: true, roleChecked: true, status: error});
         alert('Cannot get user role: '+ error);
       }
     });
@@ -40,7 +39,7 @@ class ArticleApplication extends React.Component {
       },
       error: function(xhr, status, error) {
         self.setState({ error: false, isLoaded: true, status: error});
-        alert('Cannot get data from API: '+ error);
+        alert('Cannot get article data from API: '+ error);
       }
     });
   }

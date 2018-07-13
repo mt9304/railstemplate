@@ -9,6 +9,7 @@ class Ability
     else
       can :read, Project
       can :read, Article
+      can :search, Article
     end
   end
 end

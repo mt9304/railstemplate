@@ -226,3 +226,12 @@ h6, .h6 {
 }
 
 /* End of main page */
+
+/* General */
+.ta-float-right {
+  float: right;
+}
+
+.ta-article-text {
+  overflow-wrap: break-word;
+}

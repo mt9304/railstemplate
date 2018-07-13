@@ -2,7 +2,7 @@ module Api
 	class ArticlesController < ApplicationController
 		load_and_authorize_resource
 		before_action :set_article, only: [:destroy, :update]
-		before_action :authenticate_user!, except: [:index, :show]
+		before_action :authenticate_user!, except: [:index, :show, :search]
 
 		def index
 			render json: Article.all
