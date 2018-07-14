@@ -52,11 +52,6 @@ class ArticlePage extends React.Component {
 
   render() {
     const { error, isLoaded, article, isAdmin, roleChecked } = this.state;
-    //const editLink = "/articles/edit/"+article[0].name;
-    if (article)
-    {
-      console.log(article[0].id);
-    }
 
     if (error) {
       const { error, isLoaded, status, isAdmin, roleChecked } = this.state;
@@ -68,8 +63,6 @@ class ArticlePage extends React.Component {
       if (isAdmin)
       {
         var editLink = "/articles/" + article[0].id + "/edit";
-        var previousArticleLink = "/article?name=" + article[0].previous_article;
-        var nextArticleLink = "/article?name=" + article[0].next_article;
         return (
           <div>
             <div className="blog-header">
@@ -92,10 +85,7 @@ class ArticlePage extends React.Component {
               </div>
             </div>
 
-            <nav className="blog-pagination">
-              <span><a id="ta-previous" href={previousArticleLink}>Previous</a></span>
-              <span><a id="ta-next" href={nextArticleLink}>Next</a></span>
-            </nav>
+            <DirectionButtons previous_article={article[0].previous_article} next_article={article[0].next_article} />
           </div>
         );
       }
@@ -122,10 +112,7 @@ class ArticlePage extends React.Component {
               </div>
             </div>
 
-            <nav className="blog-pagination">
-              <span><a id="ta-previous" href={previousArticleLink}>Previous</a></span>
-              <span><a id="ta-next" href={nextArticleLink}>Next</a></span>
-            </nav>
+            <DirectionButtons previous_article={article[0].previous_article} next_article={article[0].next_article} />
           </div>
         );
       }
