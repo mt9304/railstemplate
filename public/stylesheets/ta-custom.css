@@ -235,3 +235,7 @@ h6, .h6 {
 .ta-article-text {
   overflow-wrap: break-word;
 }
+
+.ta-white {
+  color: white;
+}

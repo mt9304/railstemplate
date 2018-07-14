@@ -31,11 +31,12 @@ class Article extends React.Component {
 
 
   render() {
+    var articleLink = "/article?name=" + this.state.item.name;
     if (this.state.isAdmin)
     {
       return (
           <tr>
-            <td>{this.state.item.name}</td>
+            <td><a className="ta-white" href={articleLink}>{this.state.item.name}</a></td>
             <td>{this.state.item.article_date}</td>
             <td>{this.state.item.description}</td>
             <td>          
@@ -50,7 +51,7 @@ class Article extends React.Component {
     {
       return (
           <tr>
-            <td>{this.state.item.name}</td>
+            <td><a className="ta-white" href={articleLink}>{this.state.item.name}</a></td>
             <td>{this.state.item.article_date}</td>
             <td>{this.state.item.description}</td>
           </tr>
