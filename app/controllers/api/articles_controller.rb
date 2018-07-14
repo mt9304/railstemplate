@@ -57,11 +57,11 @@ module Api
 		private
 
 		def article_params
-	  		params.permit(:article, :name, :article_date, :description, :content, :tags)
+	  		params.permit(:article, :name, :article_date, :description, :previous_article, :next_article, :content, :tags)
 		end
 
 		def article_create_params
-			params.require(:article).permit(:name, :article_date, :description, :content, :tags)
+			params.require(:article).permit(:name, :article_date, :description, :previous_article, :next_article, :content, :tags)
 		end
 
 		def set_article

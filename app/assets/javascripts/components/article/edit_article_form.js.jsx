@@ -46,10 +46,12 @@ class EditArticleForm extends React.Component {
 		var name_input = document.getElementsByName("name")[0].value;
 		var article_date_input = document.getElementsByName("article_date")[0].value;
 		var description_input = document.getElementsByName("description")[0].value;
+		var previous_article_input = document.getElementsByName("previous_article")[0].value;
+		var next_article_input = document.getElementsByName("next_article")[0].value;
 		//For getting Quill HTML content. 
 		var richTextNode = document.getElementsByClassName('ql-editor')[0];
 		htmlContent = richTextNode.innerHTML;
-		this.setState( { article: { name: name_input, article_date: article_date_input, description: description_input, content: htmlContent } }, () => {
+		this.setState( { article: { name: name_input, article_date: article_date_input, description: description_input, previous_article: previous_article_input, next_article: next_article_input, content: htmlContent } }, () => {
 			current_state = this.state;
 		
 		//this.getInputData();
@@ -69,7 +71,7 @@ class EditArticleForm extends React.Component {
 		    success: function(data) {
 		      //self.setState({ name: "", article_date: "", description: "", content: "", tags: "" });
 		      //richTextNode.innerHTML = "";
-		      console.log(current_state);
+		      //console.log(current_state);
 		      console.log("Post edited successfully");
 		      //Add flash message here. 
 		    },
@@ -93,9 +95,11 @@ class EditArticleForm extends React.Component {
 		var name_input = document.getElementsByName("name")[0].value;
 		var article_date_input = document.getElementsByName("article_date")[0].value;
 		var description_input = document.getElementsByName("description")[0].value;
+		var previous_article_input = document.getElementsByName("previous_article")[0].value;
+		var next_article_input = document.getElementsByName("next_article")[0].value;
 		//var content_input = document.getElementsByClassName("ql-editor")[0];
 		console.log(name_input + " " +  article_date_input + " " + description_input);
-		this.setState( { article: { name: name_input, article_date: article_date_input, description: description_input } });
+		this.setState( { article: { name: name_input, article_date: article_date_input, description: description_input, previous_article: previous_article_input, next_article: next_article_input } });
 		console.log("This: " + this.state.article.description);
 		//this.setState( { article: { article_date: article_date_input.value } });
 		//this.setState( { article: { description: description_input.value } });
@@ -107,11 +111,15 @@ class EditArticleForm extends React.Component {
 		var name_input = document.getElementsByName("name")[0];
 		var article_date_input = document.getElementsByName("article_date")[0];
 		var description_input = document.getElementsByName("description")[0];
+		var previous_article_input = document.getElementsByName("previous_article")[0];
+		var next_article_input = document.getElementsByName("next_article")[0];
 		var content_input = document.getElementsByClassName("ql-editor")[0];
 
 		name_input.value = this.state.article.name;
 		article_date_input.value = this.state.article.article_date;
 		description_input.value = this.state.article.description;
+		previous_article_input.value = this.state.article.previous_article;
+		next_article_input.value = this.state.article.next_article;
 		content_input.innerHTML = this.state.article.content;
 	}
 
@@ -132,25 +140,48 @@ class EditArticleForm extends React.Component {
 	render() {
 		return(
 		  <form className="ta-input-block" onSubmit={this.handleUpdate.bind(this)}>
-		    <div className="ta-top-input">
-		      <div className="form-group ta-left">
-		        <input type="text"
-		               className="form-control"
-		               name="name"
-		               placeholder="Name"
+		  	<div className="ta-top-half-edit">
+			    <div className="ta-top-input">
+			      <div className="form-group ta-left">
+			        <input type="text"
+			               className="form-control"
+			               name="name"
+			               placeholder="Name"
 
-		               
-		               onChange={this.handleChange.bind(this)} />
-		      </div>
-		      <div className="form-group ta-right">
-		        <input type="date"
-		               className="form-control"
-		               name="article_date"
-		               placeholder="Article Date"
+			               
+			               onChange={this.handleChange.bind(this)} />
+			      </div>
+			      <div className="form-group ta-right">
+			        <input type="date"
+			               className="form-control"
+			               name="article_date"
+			               placeholder="Article Date"
 
-		               
-		               onChange={this.handleChange.bind(this)} />
-		      </div>
+			               
+			               onChange={this.handleChange.bind(this)} />
+			      </div>
+			    </div>
+
+			    <div className="ta-top-input ta-clear-both">
+			      <div className="form-group ta-left">
+			        <input type="text"
+			               className="form-control"
+			               name="previous_article"
+			               placeholder="Previous Article Name"
+
+			               
+			               onChange={this.handleChange.bind(this)} />
+			      </div>
+			      <div className="form-group ta-right">
+			        <input type="text"
+			               className="form-control"
+			               name="next_article"
+			               placeholder="Next Article Name"
+
+			               
+			               onChange={this.handleChange.bind(this)} />
+			      </div>
+			    </div>
 		    </div>
 
 		    <div className="ta-bottom-input">
@@ -172,8 +203,6 @@ class EditArticleForm extends React.Component {
 		    <div id="editor" className="ta-quill-textbox" name="content"  >
 		      <p id="richText"></p>
 		    </div>
-
-
 
 		    <button type="submit" className="btn btn-primary">Submit</button>
 		  </form>

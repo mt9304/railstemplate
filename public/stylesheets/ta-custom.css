@@ -239,3 +239,7 @@ h6, .h6 {
 .ta-white {
   color: white;
 }
+
+.ta-clear-both {
+  clear: both;
+}

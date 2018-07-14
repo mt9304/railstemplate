@@ -68,6 +68,8 @@ class ArticlePage extends React.Component {
       if (isAdmin)
       {
         var editLink = "/articles/" + article[0].id + "/edit";
+        var previousArticleLink = "/article?name=" + article[0].previous_article;
+        var nextArticleLink = "/article?name=" + article[0].next_article;
         return (
           <div>
             <div className="blog-header">
@@ -91,8 +93,8 @@ class ArticlePage extends React.Component {
             </div>
 
             <nav className="blog-pagination">
-              <span><a id="ta-previous" href="#">Previous</a></span>
-              <span><a id="ta-next" href="#">Next</a></span>
+              <span><a id="ta-previous" href={previousArticleLink}>Previous</a></span>
+              <span><a id="ta-next" href={nextArticleLink}>Next</a></span>
             </nav>
           </div>
         );
@@ -121,8 +123,8 @@ class ArticlePage extends React.Component {
             </div>
 
             <nav className="blog-pagination">
-              <span><a id="ta-previous" href="#">Previous</a></span>
-              <span><a id="ta-next" href="#">Next</a></span>
+              <span><a id="ta-previous" href={previousArticleLink}>Previous</a></span>
+              <span><a id="ta-next" href={nextArticleLink}>Next</a></span>
             </nav>
           </div>
         );

@@ -2,7 +2,7 @@ class NewArticleForm extends React.Component {
 
   constructor(props) {
   	super(props);
-	this.state = { name: "", article_date: "", description: "", content: "", tags: "" }; 
+	this.state = { name: "", article_date: "", description: "", content: "", tags: "", previous_article: "", next_article: "" }; 
   //console.log(this.state.name);
   }
 
@@ -37,7 +37,7 @@ class NewArticleForm extends React.Component {
           //console.log("Adding Record " + current_state);
           //self.props.handleAdd(data);
           //console.log("Adding Record2");
-          self.setState({ name: "", article_date: "", description: "", content: "", tags: "" });
+          self.setState({ name: "", article_date: "", description: "", content: "", tags: "", previous_article: "", next_article: "" });
           richTextNode.innerHTML = "";
           console.log("Post created successfully");
           //Add flash message here. 
@@ -69,24 +69,47 @@ class NewArticleForm extends React.Component {
   render() {
     return(
       <form className="ta-input-block" onSubmit={this.handleAdd.bind(this)}>
-        <div className="ta-top-input">
-          <div className="form-group ta-left">
-            <input type="text"
-                   className="form-control"
-                   name="name"
-                   placeholder="Name"
-
-                   value={this.state.name}
-                   onChange={this.handleChange.bind(this)} />
+        <div className="ta-top-half-edit">
+          <div className="ta-top-input">
+            <div className="form-group ta-left">
+              <input type="text"
+                     className="form-control"
+                     name="name"
+                     placeholder="Name"
+                     value={this.state.name}
+                     
+                     onChange={this.handleChange.bind(this)} />
+            </div>
+            <div className="form-group ta-right">
+              <input type="date"
+                     className="form-control"
+                     name="article_date"
+                     placeholder="Article Date"
+                     value={this.state.article_date}
+                     
+                     onChange={this.handleChange.bind(this)} />
+            </div>
           </div>
-          <div className="form-group ta-right">
-            <input type="date"
-                   className="form-control"
-                   name="article_date"
-                   placeholder="Article Date"
 
-                   value={this.state.article_date}
-                   onChange={this.handleChange.bind(this)} />
+          <div className="ta-top-input ta-clear-both">
+            <div className="form-group ta-left">
+              <input type="text"
+                     className="form-control"
+                     name="previous_article"
+                     placeholder="Previous Article Name"
+                     value={this.state.previous_article}
+                     
+                     onChange={this.handleChange.bind(this)} />
+            </div>
+            <div className="form-group ta-right">
+              <input type="text"
+                     className="form-control"
+                     name="next_article"
+                     placeholder="Next Article Name"
+                     value={this.state.next_article}
+                     
+                     onChange={this.handleChange.bind(this)} />
+            </div>
           </div>
         </div>
 
