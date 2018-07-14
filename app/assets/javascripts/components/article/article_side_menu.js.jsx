@@ -102,16 +102,16 @@ class ArticleSideMenu extends React.Component{
 
 				<p className="ta-menu-header">Next Steps</p>
                 <li className="">
-                    <a href="#homeSubmenu">Thoughts And Prayers</a>
+                    <a href="#homeSubmenu">Foreseable Topics</a>
                 </li>
             </ul>
 
             <ul className="list-unstyled CTAs">
                 <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip">Article Search</a>
+                    <a href="/">Back to Home</a>
                 </li>
                 <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar">Back To Article List</a>
+                    <a href="/articles">Back To Article List</a>
                 </li>
             </ul>
         </nav>
