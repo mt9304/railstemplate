@@ -44,7 +44,7 @@ rails s
 ## Template Overview
 
 ### Authorization
-
+#### Tables
 - The roles table contains the role id and the role name. The users_roles table contains the user id and an associating role id. 
 - The user model in /app/models/user.rb has methods such as below to help check a user's role. 
 ```
@@ -56,6 +56,9 @@ rails s
 	has_role?(:normal_user)
  end
 ```
+
+#### Permitting Actions
+
 - Abilities for roles are defined in /app/models/ability.rb. In the initialize method, you can specify what each role can do by using the keyword "can" such as below: 
 ```
 if user.normal_user?
@@ -93,6 +96,9 @@ rescue_from CanCan::AccessDenied do |exception|
 end
 ...
 ```
+
+#### Hiding/Showing Content
+
 - For limiting what a user can see depending on role, you can include the following in your views: 
 ```
 <% if current_user && current_user.admin? %>
@@ -148,6 +154,7 @@ componentDidMount() {
 }
 ```
 
+#### Storing and Rendering HTML
 - If you want to store the raw HTML made by using the editor, you can use something like this in your React Javascript file: 
 ```
 ...
