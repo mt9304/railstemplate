@@ -126,7 +126,7 @@ end
 ### Quilljs HTML Editor
 #### Implementing
 - An example on how to implement on a page can be found in /app/assets/javascripts/components/article/new_article_form.js.jsx
-- Quilljs scripts/css files should be available for your page before implementing (details [here](https://quilljs.com/docs/download/): 
+- Quilljs scripts/css files should be available for your page before implementing (details [here](https://quilljs.com/docs/download/)): 
 
 ```
 <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
