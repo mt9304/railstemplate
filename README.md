@@ -1,12 +1,13 @@
-# Rails and React template 
+# Ruby on Rails with React Remplate 
 
 - [Introduction](#introduction)
 - [Prerequisites](#prerequisites)
 	- [Suggested Environment](#suggested-environment)
 	- [Installation](#installation)
-- [Basic Setup](#basic-setup)
+- [Template Overview](#template-overview)
 	- [Authentication](#authentication)
 	- [Authorization](#authorization)
+	- [Quilljs HTML Editor](#quilljs-html-editor)
 
 ## Introduction
 
@@ -40,7 +41,7 @@ rails s
 ```
 5. Visit localhost:3000/ to visit the website. 
 
-## Basic Setup
+## Template Overview
 
 ### Authorization
 
@@ -110,5 +111,67 @@ def configure_permitted_parameters
 	devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password])
 	devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email, :password, :current_password])
 end 
+...
+```
+
+### Quilljs HTML Editor
+- An example on how to implement on a page can be found in /app/assets/javascripts/components/article/new_article_form.js.jsx
+- Quilljs scripts/css files should be available for your page before implementing (details [here](https://quilljs.com/docs/download/): 
+
+```
+<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+```
+- All the needed scripts for this project can be found in /public/scripts/ and /public/stylesheets (files with "quill" in their name). The Some of these may be modified as well to extend its functionality (for example, source code editing). 
+
+- Put the editor on a page by adding this in the React Javascript file: 
+```
+...
+<div id="toolbar" className="ta-quill-toolbar">
+</div>
+
+<div id="editor" className="ta-quill-textbox" name="content"  >
+  <p id="richText"></p>
+</div>
+.
+```
+
+- You will also need some inline scripts to have it work properly with the current modifications that I made to the editor. This can be pretty messy and I may clean it up in the future, but for now it at least helps me accomplish what I needed with the editor. You can inject the script onto the page by adding this to the componentDidMount() method: 
+```
+componentDidMount() {
+    const scriptElement = document.createElement("script");
+    const rawScript = "var toolbarOptions = [['bold', 'italic'], ['link', 'image'],[{ 'header': [1, 2, 3, 4, 5, 6, false] }],['blockquote', 'code-block'],[{ 'color': [] }, { 'background': [] }],['showHtml']];\nvar editor = new Quill('#editor', { modules: { toolbar: toolbarOptions }, theme: 'snow' });var txtArea = document.createElement('textarea'); txtArea.style.cssText = 'width: 100%;margin: 0px;background: rgb(29, 29, 29);box-sizing: border-box;color: rgb(204, 204, 204);font-size: 15px;outline: none;padding: 20px;line-height: 24px;font-family: Consolas, Menlo, Monaco, &quot;Courier New&quot;, monospace;position: absolute;top: 0;bottom: 0;border: none;display:none'; var htmlEditor = editor.addContainer('ql-custom'); htmlEditor.appendChild(txtArea); var myEditor = document.querySelector('#editor');editor.on('text-change', (delta, oldDelta, source) => { var html = myEditor.children[0].innerHTML;txtArea.value = html }); var customButton = document.querySelector('.ql-showHtml');customButton.addEventListener('click', function() { if (txtArea.style.display === '') { var html = txtArea.value;self.editor.pasteHTML(html);} txtArea.style.display = txtArea.style.display === 'none' ? '' : 'none';});";
+    const scriptNode = document.createTextNode(rawScript);
+    scriptElement.appendChild(scriptNode);
+    document.body.appendChild(scriptElement);
+}
+```
+
+- If you want to store the raw HTML made by using the editor, you can use something like this in your React Javascript file: 
+```
+...
+addHTML(e) {
+    var richTextNode = document.getElementsByClassName('ql-editor')[0];
+    htmlContent = richTextNode.innerHTML;
+    this.setState({content: "htmlContent"});
+}
+...
+```
+- Then to render the content as HTML on a page, you can use the following (more information on [dangerouslySetInnerHTML](https://reactjs.org/docs/dom-elements.html): 
+```
+...
+constructor(props) {
+	super(props);
+	this.state = { article: content: { "<p>hello<p>" } };
+}
+...
+...
+render() {
+	return (
+		<div dangerouslySetInnerHTML={{__html: article.content}} >
+
+		</div>
+	)
+}
 ...
 ```
