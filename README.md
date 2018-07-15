@@ -49,7 +49,7 @@ rails s
 - The user model in /app/models/user.rb has methods such as below to help check a user's role. 
 ```
  def admin?
- 	has_role?(:admin)
+	has_role?(:admin)
  end
 
  def normal_user?
@@ -62,12 +62,12 @@ rails s
 - Abilities for roles are defined in /app/models/ability.rb. In the initialize method, you can specify what each role can do by using the keyword "can" such as below: 
 ```
 if user.normal_user?
- 	can :manage, YourModel, user_id: user.id #The user can only modify models created by itself. 
+	can :manage, YourModel, user_id: user.id #The user can only modify models created by itself. 
 elsif user.admin?
- 	can :manage, :all #Can read/write all models
+	can :manage, :all #Can read/write all models
 else
- 	can :read, YourModel
- 	can :your_custom_method, YourModel #If you have another method defined for model
+	can :read, YourModel
+	can :your_custom_method, YourModel #If you have another method defined for model
 end
 ```
 - In your Controller class, make sure authorization is enforced by putting this at the top:
@@ -141,7 +141,7 @@ end
 </div>
 
 <div id="editor" className="ta-quill-textbox" name="content"  >
-  <p id="richText"></p>
+	<p id="richText"></p>
 </div>
 .
 ```
@@ -149,11 +149,11 @@ end
 - You will also need some inline scripts to have it work properly with the current modifications that I made to the editor. This can be pretty messy and I may clean it up in the future, but for now it at least helps me accomplish what I needed with the editor. You can inject the script onto the page by adding this to the componentDidMount() method: 
 ```
 componentDidMount() {
-    const scriptElement = document.createElement("script");
-    const rawScript = "var toolbarOptions = [['bold', 'italic'], ['link', 'image'],[{ 'header': [1, 2, 3, 4, 5, 6, false] }],['blockquote', 'code-block'],[{ 'color': [] }, { 'background': [] }],['showHtml']];\nvar editor = new Quill('#editor', { modules: { toolbar: toolbarOptions }, theme: 'snow' });var txtArea = document.createElement('textarea'); txtArea.style.cssText = 'width: 100%;margin: 0px;background: rgb(29, 29, 29);box-sizing: border-box;color: rgb(204, 204, 204);font-size: 15px;outline: none;padding: 20px;line-height: 24px;font-family: Consolas, Menlo, Monaco, &quot;Courier New&quot;, monospace;position: absolute;top: 0;bottom: 0;border: none;display:none'; var htmlEditor = editor.addContainer('ql-custom'); htmlEditor.appendChild(txtArea); var myEditor = document.querySelector('#editor');editor.on('text-change', (delta, oldDelta, source) => { var html = myEditor.children[0].innerHTML;txtArea.value = html }); var customButton = document.querySelector('.ql-showHtml');customButton.addEventListener('click', function() { if (txtArea.style.display === '') { var html = txtArea.value;self.editor.pasteHTML(html);} txtArea.style.display = txtArea.style.display === 'none' ? '' : 'none';});";
-    const scriptNode = document.createTextNode(rawScript);
-    scriptElement.appendChild(scriptNode);
-    document.body.appendChild(scriptElement);
+	const scriptElement = document.createElement("script");
+	const rawScript = "var toolbarOptions = [['bold', 'italic'], ['link', 'image'],[{ 'header': [1, 2, 3, 4, 5, 6, false] }],['blockquote', 'code-block'],[{ 'color': [] }, { 'background': [] }],['showHtml']];\nvar editor = new Quill('#editor', { modules: { toolbar: toolbarOptions }, theme: 'snow' });var txtArea = document.createElement('textarea'); txtArea.style.cssText = 'width: 100%;margin: 0px;background: rgb(29, 29, 29);box-sizing: border-box;color: rgb(204, 204, 204);font-size: 15px;outline: none;padding: 20px;line-height: 24px;font-family: Consolas, Menlo, Monaco, &quot;Courier New&quot;, monospace;position: absolute;top: 0;bottom: 0;border: none;display:none'; var htmlEditor = editor.addContainer('ql-custom'); htmlEditor.appendChild(txtArea); var myEditor = document.querySelector('#editor');editor.on('text-change', (delta, oldDelta, source) => { var html = myEditor.children[0].innerHTML;txtArea.value = html }); var customButton = document.querySelector('.ql-showHtml');customButton.addEventListener('click', function() { if (txtArea.style.display === '') { var html = txtArea.value;self.editor.pasteHTML(html);} txtArea.style.display = txtArea.style.display === 'none' ? '' : 'none';});";
+	const scriptNode = document.createTextNode(rawScript);
+	scriptElement.appendChild(scriptNode);
+	document.body.appendChild(scriptElement);
 }
 ```
 
@@ -162,9 +162,9 @@ componentDidMount() {
 ```
 ...
 addHTML(e) {
-    var richTextNode = document.getElementsByClassName('ql-editor')[0];
-    htmlContent = richTextNode.innerHTML;
-    this.setState({content: "htmlContent"});
+	var richTextNode = document.getElementsByClassName('ql-editor')[0];
+	htmlContent = richTextNode.innerHTML;
+	this.setState({content: "htmlContent"});
 }
 ...
 ```
