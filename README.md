@@ -83,6 +83,9 @@ class YourController < ApplicationController
 	...
 end
 ```
+
+#### Handling Exceptions
+
 - If a user tries to access something not permitted to their role, it will perform the action found in /app/controllers/application_controller.rb: 
 ```
 ...
