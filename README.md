@@ -1,4 +1,4 @@
-# Ruby on Rails with React Remplate 
+# Ruby on Rails with React Template 
 
 - [Introduction](#introduction)
 - [Prerequisites](#prerequisites)
