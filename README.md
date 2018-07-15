@@ -49,22 +49,22 @@ rails s
 - The user model in /app/models/user.rb has methods such as below to help check a user's role. 
 ```
  def admin?
-    has_role?(:admin)
+ 	has_role?(:admin)
  end
 
  def normal_user?
- 	has_role?(:normal_user)
+	has_role?(:normal_user)
  end
 ```
 - Abilities for roles are defined in /app/models/ability.rb. In the initialize method, you can specify what each role can do by using the keyword "can" such as below: 
 ```
 if user.normal_user?
-  can :manage, YourModel, user_id: user.id #The user can only modify models created by itself. 
+ 	can :manage, YourModel, user_id: user.id #The user can only modify models created by itself. 
 elsif user.admin?
-  can :manage, :all #Can read/write all models
+ 	can :manage, :all #Can read/write all models
 else
-  can :read, YourModel
-  can :your_custom_method, YourModel #If you have another method defined for model
+ 	can :read, YourModel
+ 	can :your_custom_method, YourModel #If you have another method defined for model
 end
 ```
 - In your Controller class, make sure authorization is enforced by putting this at the top:
@@ -74,7 +74,7 @@ class YourController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show] #Users will need the proper roles have access to methods other than index and show.
 
 	def index
-	...
+		...
 	end
 
 	...
@@ -115,6 +115,7 @@ end
 ```
 
 ### Quilljs HTML Editor
+#### Implementing
 - An example on how to implement on a page can be found in /app/assets/javascripts/components/article/new_article_form.js.jsx
 - Quilljs scripts/css files should be available for your page before implementing (details [here](https://quilljs.com/docs/download/): 
 
