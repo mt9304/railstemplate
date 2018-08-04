@@ -168,7 +168,7 @@ addHTML(e) {
 }
 ...
 ```
-- Then to render the content as HTML on a page, you can use the following (more information on [dangerouslySetInnerHTML](https://reactjs.org/docs/dom-elements.html): 
+- Then to render the content as HTML on a page, you can use the following (more information on [dangerouslySetInnerHTML](https://reactjs.org/docs/dom-elements.html)): 
 ```
 ...
 constructor(props) {
