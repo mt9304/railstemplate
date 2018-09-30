@@ -114,8 +114,8 @@ end
 - Default login url is /users/sign_in and register url is /users/sign_up. 
 - Further information about the view can be found in the /app/views/devise/ folder. 
 - Parameters can be found in /app/controllers/application_controller.rb: 
-```
-...Ruby
+```Ruby
+...
 def configure_permitted_parameters
    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password])
    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email, :password, :current_password])
