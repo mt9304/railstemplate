@@ -11,11 +11,11 @@
 
 ## Introduction
 
-This is a template I use as a starting point to create a Rails web application with React.js as an optional front-end. It includes some of the functions that I use the most commonly for projects: 
+This is a template I use as a starting point to create a Rails web application with React.js as an optional front-end. It includes some of the functions that I use most commonly for projects: 
 
-- CRUD functions for an example model (an article). 
-- Rails RESTful API to interact with the example model. 
-- React.js (v16.2) setup with jQuery's ajax functions to interact with the API. 
+- CRUD functions for a sample model (an article). 
+- Rails RESTful API to interact with the sample model. 
+- React.js (v16.2) setup with AJAX functions to interact with the API. 
 - Authentication and authorization using the gems [Devise](https://github.com/plataformatec/devise), [CanCan](https://github.com/ryanb/cancan), and [Rolify](https://github.com/RolifyCommunity/rolify). 
 - [Quill.js](https://quilljs.com/docs/quickstart/) HTML text editor for editing and creating markup text. 
 
@@ -27,11 +27,11 @@ This is a template I use as a starting point to create a Rails web application w
 2. [Ruby on Rails environment](http://installfest.railsbridge.org/installfest/)
 
 ### Installation
-1. In terminal, go to directory you want to save project in and type: 
+1. In the terminal, go to the directory you want to save project in and type: 
 ```
 git clone https://github.com/mt9304/railstemplate.git
 ```
-2. Go into project folder and install dependencies (bundle update, bundle install, etc). 
+2. Go into project folder and install dependencies (bundle install). 
 
 3. Setup the database (rake db:create, rake db:migrate, etc). 
 
@@ -47,7 +47,7 @@ rails s
 #### Tables
 - The roles table contains the role id and the role name. The users_roles table contains the user id and an associating role id. 
 - The user model in /app/models/user.rb has methods such as below to help check a user's role. 
-```
+```Ruby
  def admin?
    has_role?(:admin)
  end
