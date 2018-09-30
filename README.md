@@ -28,7 +28,7 @@ This is a template I use as a starting point to create a Rails web application w
 
 ### Installation
 1. In the terminal, go to the directory you want to save project in and type: 
-```
+```Bash
 git clone https://github.com/mt9304/railstemplate.git
 ```
 2. Go into project folder and install dependencies (bundle install). 
@@ -36,7 +36,7 @@ git clone https://github.com/mt9304/railstemplate.git
 3. Setup the database (rake db:create, rake db:migrate, etc). 
 
 4. Start the application by typing in the terminal: 
-```
+```Bash
 rails s
 ```
 5. Visit localhost:3000/ to visit the website. 
