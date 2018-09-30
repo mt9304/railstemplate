@@ -60,7 +60,7 @@ rails s
 #### Permitting Actions
 
 - Abilities for roles are defined in /app/models/ability.rb. In the initialize method, you can specify what each role can do by using the keyword "can" such as below: 
-```
+```Ruby
 if user.normal_user?
    can :manage, YourModel, user_id: user.id #The user can only modify models created by itself. 
 elsif user.admin?
@@ -71,7 +71,7 @@ else
 end
 ```
 - In your Controller class, make sure authorization is enforced by putting this at the top:
-```
+```Ruby
 class YourController < ApplicationController
    load_and_authorize_resource
    before_action :authenticate_user!, except: [:index, :show] #Users will need the proper roles have access to methods other than index and show.
@@ -87,7 +87,7 @@ end
 #### Handling Exceptions
 
 - If a user tries to access something not permitted to their role, it will perform the action found in /app/controllers/application_controller.rb: 
-```
+```Ruby
 ...
 rescue_from CanCan::AccessDenied do |exception|
    respond_to do |format|
@@ -103,7 +103,7 @@ end
 #### Hiding/Showing Content
 
 - For limiting what a user can see depending on role, you can include the following in your views: 
-```
+```Ruby
 <% if current_user && current_user.admin? %>
    <li><%= link_to "New", new_model_path %></li>
 <% end %>
@@ -115,7 +115,7 @@ end
 - Further information about the view can be found in the /app/views/devise/ folder. 
 - Parameters can be found in /app/controllers/application_controller.rb: 
 ```
-...
+...Ruby
 def configure_permitted_parameters
    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password])
    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email, :password, :current_password])
@@ -128,14 +128,14 @@ end
 - An example on how to implement on a page can be found in /app/assets/javascripts/components/article/new_article_form.js.jsx
 - Quilljs scripts/css files should be available for your page before implementing (details [here](https://quilljs.com/docs/download/)): 
 
-```
+```JavaScript
 <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
 <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
 ```
 - All the needed scripts for this project can be found in /public/scripts/ and /public/stylesheets (files with "quill" in their name). The Some of these may be modified as well to extend its functionality (for example, source code editing). 
 
 - Put the editor on a page by adding this in the React Javascript file: 
-```
+```JavaScript
 ...
 <div id="toolbar" className="ta-quill-toolbar">
 </div>
@@ -147,7 +147,7 @@ end
 ```
 
 - You will also need some inline scripts to have it work properly with the current modifications that I made to the editor. This can be pretty messy and I may clean it up in the future, but for now it at least helps me accomplish what I needed with the editor. You can inject the script onto the page by adding this to the componentDidMount() method: 
-```
+```JavaScript
 componentDidMount() {
    const scriptElement = document.createElement("script");
    const rawScript = "var toolbarOptions = [['bold', 'italic'], ['link', 'image'],[{ 'header': [1, 2, 3, 4, 5, 6, false] }],['blockquote', 'code-block'],[{ 'color': [] }, { 'background': [] }],['showHtml']];\nvar editor = new Quill('#editor', { modules: { toolbar: toolbarOptions }, theme: 'snow' });var txtArea = document.createElement('textarea'); txtArea.style.cssText = 'width: 100%;margin: 0px;background: rgb(29, 29, 29);box-sizing: border-box;color: rgb(204, 204, 204);font-size: 15px;outline: none;padding: 20px;line-height: 24px;font-family: Consolas, Menlo, Monaco, &quot;Courier New&quot;, monospace;position: absolute;top: 0;bottom: 0;border: none;display:none'; var htmlEditor = editor.addContainer('ql-custom'); htmlEditor.appendChild(txtArea); var myEditor = document.querySelector('#editor');editor.on('text-change', (delta, oldDelta, source) => { var html = myEditor.children[0].innerHTML;txtArea.value = html }); var customButton = document.querySelector('.ql-showHtml');customButton.addEventListener('click', function() { if (txtArea.style.display === '') { var html = txtArea.value;self.editor.pasteHTML(html);} txtArea.style.display = txtArea.style.display === 'none' ? '' : 'none';});";
@@ -159,7 +159,7 @@ componentDidMount() {
 
 #### Storing and Rendering HTML
 - If you want to store the raw HTML made by using the editor, you can use something like this in your React Javascript file: 
-```
+```JavaScript
 ...
 addHTML(e) {
    var richTextNode = document.getElementsByClassName('ql-editor')[0];
@@ -169,7 +169,7 @@ addHTML(e) {
 ...
 ```
 - Then to render the content as HTML on a page, you can use the following (more information on [dangerouslySetInnerHTML](https://reactjs.org/docs/dom-elements.html)): 
-```
+```JavaScript
 ...
 constructor(props) {
    super(props);
