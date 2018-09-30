@@ -135,7 +135,7 @@ end
 - All the needed scripts for this project can be found in /public/scripts/ and /public/stylesheets (files with "quill" in their name). The Some of these may be modified as well to extend its functionality (for example, source code editing). 
 
 - Put the editor on a page by adding this in the React Javascript file: 
-```JavaScript
+```HTML
 ...
 <div id="toolbar" className="ta-quill-toolbar">
 </div>
